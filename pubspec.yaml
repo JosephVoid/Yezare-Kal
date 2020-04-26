@@ -19,6 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_sequence_animation: ^3.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -38,6 +39,21 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+  fonts:
+    - family: HelveticaBold
+      fonts:
+        - asset: assets/fonts/HelveticaNeuBold.ttf
+    - family: HelveticaLight
+      fonts:
+        - asset: assets/fonts/HelveticaNeueLight.ttf
+    - family: HelveticaMedium
+      fonts:
+        - asset: assets/fonts/HelveticaNeueMedium.ttf
+
+  assets:
+    - assets/images/
+
+
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
@@ -56,12 +72,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
