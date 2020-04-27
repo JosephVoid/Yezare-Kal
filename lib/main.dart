@@ -3,28 +3,46 @@ import 'package:flutter/material.dart';
 import 'controller/TheAppBar.dart';
 import 'models/constants.dart';
 import 'package:flutter_sequence_animation/flutter_sequence_animation.dart';
+import 'controller/TheDrawer.dart';
+import 'screens/dictionary.dart';
+import 'screens/quiz.dart';
 
 void main() => runApp(App());
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: AppBody()
+    return GestureDetector(
+      onTap: (){
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: MaterialApp(
+        home: AppBody(),
+        routes: {
+          Dictionary.id : (context) => Dictionary(),
+          Quiz.id : (context) => Quiz(),
+          AppBody.id : (context) => AppBody(),
+        },
+      ),
     );
   }
 }
 
 class AppBody extends StatefulWidget {
+  static String id = "home";
   @override
   _AppBodyState createState() => _AppBodyState();
 }
 
 class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
+
   SequenceAnimation sequenceAnimation;
   AnimationController controller;
-//  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
-  GlobalKey<ScaffoldState> _drawerKey;
+  GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     controller = AnimationController(vsync: this);
@@ -75,40 +93,12 @@ class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
             title: 'መነሻ',
             stateKey:_drawerKey,
             icon: Icons.menu,
-            onIconPress: (){},
             countDownTimer: null
         ),
-        drawer: Drawer(
-      child: ListView(
-      padding: EdgeInsets.zero,
-        children: const <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Text(
-              'Drawer Header',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.message),
-            title: Text('Messages'),
-          ),
-          ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile'),
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-          ),
-        ],
-      ),
-    ),
+        drawer: SizedBox(
+          width: 230,
+          child: TheDrawer(page: Pages.HOME,)
+        ),
         body: Padding(
           padding: const EdgeInsets.all(30.0),
           child: Center(
@@ -151,7 +141,9 @@ class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical:30.0),
                           child: FlatButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.pushNamed(context, Quiz.id);
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -178,7 +170,9 @@ class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical:30.0),
                           child: FlatButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.pushNamed(context, Dictionary.id);
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                   color: kRed,

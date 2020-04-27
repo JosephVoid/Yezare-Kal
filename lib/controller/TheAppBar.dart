@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yezarekal/models/constants.dart';
 
-Widget appBar({String title, GlobalKey<ScaffoldState> stateKey,IconData icon, Function onIconPress, Widget countDownTimer}){
+Widget appBar({String title, GlobalKey<ScaffoldState> stateKey,IconData icon, Widget countDownTimer}){
   return AppBar(
     title: Padding(
       padding: const EdgeInsets.only(top: 20,left: 10),
@@ -17,7 +17,7 @@ Widget appBar({String title, GlobalKey<ScaffoldState> stateKey,IconData icon, Fu
     leading: Padding(
       padding: const EdgeInsets.only(top: 20,left: 10),
       child: FlatButton(
-        onPressed: stateKey != null ? () => stateKey.currentState.openDrawer() : onIconPress,
+        onPressed: () => stateKey.currentState.openDrawer(),
         child: Icon(
             icon,
             color: kBlueBlack,
