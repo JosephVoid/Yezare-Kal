@@ -5,6 +5,7 @@ const Color kWhite = Color(0XFFF3F5F8);
 const Color kRed = Color(0XFFE84855);
 
 enum Pages{HOME,QUIZ,DICTIONARY,WOD,SETTINGS,ABOUT}
+enum Buttons{TIME,DIFFICULTY,NUMBER}
 
 const kInputdecoration = InputDecoration(
   prefixIcon: Icon(Icons.search,color: kBlueBlack,size: 30,),

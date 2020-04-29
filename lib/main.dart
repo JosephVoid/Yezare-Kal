@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:yezarekal/screens/quiz_page.dart';
 import 'controller/TheAppBar.dart';
 import 'models/constants.dart';
 import 'package:flutter_sequence_animation/flutter_sequence_animation.dart';
 import 'controller/TheDrawer.dart';
 import 'screens/dictionary.dart';
-import 'screens/quiz.dart';
+import 'screens/ready_page.dart';
+import 'screens/results.dart';
+import 'screens/words.dart';
+import 'screens/settings.dart';
 
 void main() => runApp(App());
 
@@ -25,6 +29,10 @@ class App extends StatelessWidget {
           Dictionary.id : (context) => Dictionary(),
           Quiz.id : (context) => Quiz(),
           AppBody.id : (context) => AppBody(),
+          Result.id : (context) => Result(),
+          Word.id : (context) => Word(),
+          Setting.id : (context) => Setting(),
+          QuestionsPage.id : (context) => QuestionsPage(),
         },
       ),
     );

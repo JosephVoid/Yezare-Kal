@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yezarekal/screens/words.dart';
 import '../controller/TheAppBar.dart';
 import '../controller/TheDrawer.dart';
 import '../models/constants.dart';
@@ -47,7 +48,12 @@ class _DictionaryState extends State<Dictionary> {
                     child: ListView(
                       padding: const EdgeInsets.only(top: 30.0),
                       children: <Widget>[
-                        Text("i am waiting for you..you cant deny me")
+                        FlatButton(
+                            child: Text("i am waiting for you..you cant deny me"),
+                            onPressed: (){
+                              Navigator.pushNamed(context, Word.id);
+                            },
+                        )
                       ],
                     ),
                   )

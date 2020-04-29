@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yezarekal/models/constants.dart';
-import 'package:yezarekal/screens/quiz.dart';
+import 'package:yezarekal/screens/ready_page.dart';
+import 'package:yezarekal/screens/settings.dart';
 import 'MenuTiles.dart';
 import '../screens/dictionary.dart';
 import '../main.dart';
+
 
 class TheDrawer extends StatelessWidget {
   final Pages page;
@@ -50,7 +52,10 @@ class TheDrawer extends StatelessWidget {
                   SizedBox(height: 10),
                   MenuTile(title: "አማራጮች", icon: Icons.settings,
                     isSelected: page == Pages.SETTINGS ? true : false,
-                    onPress: (){},
+                    onPress: (){
+                      if(page != Pages.SETTINGS)
+                        Navigator.pushNamed(context, Setting.id);
+                    },
                   ),
                   SizedBox(height: 10),
                   MenuTile(title: "ስለ ስሪው", icon: Icons.info_outline,
