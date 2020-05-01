@@ -3,9 +3,13 @@ import 'package:yezarekal/screens/words.dart';
 import '../controller/TheAppBar.dart';
 import '../controller/TheDrawer.dart';
 import '../models/constants.dart';
+import '../models/word.dart';
 
 class Dictionary extends StatefulWidget {
   static String id = "dictionary";
+  List<Word> words;
+  Dictionary({this.words});
+
   @override
   _DictionaryState createState() => _DictionaryState();
 }
@@ -14,6 +18,7 @@ class _DictionaryState extends State<Dictionary> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    print(widget.words[0].word);
     return Container(
       decoration: BoxDecoration(
           color: kWhite,
@@ -51,7 +56,7 @@ class _DictionaryState extends State<Dictionary> {
                         FlatButton(
                             child: Text("i am waiting for you..you cant deny me"),
                             onPressed: (){
-                              Navigator.pushNamed(context, Word.id);
+                              Navigator.pushNamed(context, Word_page.id);
                             },
                         )
                       ],

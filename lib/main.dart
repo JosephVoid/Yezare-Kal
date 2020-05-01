@@ -10,6 +10,8 @@ import 'screens/ready_page.dart';
 import 'screens/results.dart';
 import 'screens/words.dart';
 import 'screens/settings.dart';
+import 'screens/splash.dart';
+import 'models/word.dart';
 
 void main() => runApp(App());
 
@@ -24,15 +26,16 @@ class App extends StatelessWidget {
         }
       },
       child: MaterialApp(
-        home: AppBody(),
+        home: SplashScreen(),
         routes: {
           Dictionary.id : (context) => Dictionary(),
           Quiz.id : (context) => Quiz(),
           AppBody.id : (context) => AppBody(),
           Result.id : (context) => Result(),
-          Word.id : (context) => Word(),
+          Word_page.id : (context) => Word_page(),
           Setting.id : (context) => Setting(),
           QuestionsPage.id : (context) => QuestionsPage(),
+          SplashScreen.id : (context) => SplashScreen(),
         },
       ),
     );
@@ -41,6 +44,9 @@ class App extends StatelessWidget {
 
 class AppBody extends StatefulWidget {
   static String id = "home";
+  List<Word> words;
+  AppBody({this.words});
+
   @override
   _AppBodyState createState() => _AppBodyState();
 }
@@ -179,7 +185,11 @@ class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
                           padding: const EdgeInsets.symmetric(vertical:30.0),
                           child: FlatButton(
                             onPressed: (){
-                              Navigator.pushNamed(context, Dictionary.id);
+                              Navigator.push(context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Dictionary(words: widget.words),
+                                  )
+                              );
                             },
                             child: Container(
                               decoration: BoxDecoration(

@@ -3,13 +3,13 @@ import 'package:yezarekal/models/constants.dart';
 import '../controller/TheAppBar.dart';
 import '../controller/TheDrawer.dart';
 
-class Word extends StatefulWidget {
+class Word_page extends StatefulWidget {
   static String id = "word";
   @override
-  _WordState createState() => _WordState();
+  _Word_pageState createState() => _Word_pageState();
 }
 
-class _WordState extends State<Word> {
+class _Word_pageState extends State<Word_page> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
