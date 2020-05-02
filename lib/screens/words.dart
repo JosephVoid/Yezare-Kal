@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:yezarekal/models/constants.dart';
 import '../controller/TheAppBar.dart';
 import '../controller/TheDrawer.dart';
+import '../models/word.dart';
 
 class Word_page extends StatefulWidget {
   static String id = "word";
+  Word word;
+  Word_page({this.word});
+
   @override
   _Word_pageState createState() => _Word_pageState();
 }
@@ -13,6 +17,7 @@ class _Word_pageState extends State<Word_page> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    Word theWord = widget.word;
     return Container(
         decoration: BoxDecoration(
           color: kWhite,
@@ -40,35 +45,29 @@ class _Word_pageState extends State<Word_page> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Text('Sample',style:
+                  Text(theWord.word,style:
                       TextStyle(
                         fontSize: 60.0,
                         color: kBlueBlack,
                         fontWeight: FontWeight.bold
                       )
                     ,),
-                  Text('(Sample translation)',style:
+                  Text('(${theWord.translation})',style:
                       TextStyle(
                         color: kRed,
                         fontSize: 20.0
                       )
                     ,),
                   SizedBox(height: 30.0),
-                  Text('1) Lorem Lored loredm Lored loredadf asddfsm',style:
+                  Text(theWord.definition1,style:
                       TextStyle(
                         fontSize: 25.0,
                         color: kBlueBlack
                       )
                     ,),
-                  SizedBox(height: 10.0),
-                  Text('2) Lorem Lored loredm Lored loredadf asddfsm',style:
-                  TextStyle(
-                      fontSize: 25.0,
-                      color: kBlueBlack
-                  )
-                    ,),
+
                   SizedBox(height: 30.0),
-                  Text('Misale',style:
+                  Text('ምሳሌ',style:
                       TextStyle(
                         color: kBlueBlack,
                         fontSize: 30.0,
@@ -78,17 +77,7 @@ class _Word_pageState extends State<Word_page> {
                   SizedBox(height: 10.0),
                   Padding(
                     padding: EdgeInsets.only(left: 20.0),
-                    child: Text('1) Lorem Lored loredm Lored loredadf asddfsm',style:
-                    TextStyle(
-                        fontSize: 20.0,
-                        color: kBlueBlack
-                    )
-                      ,),
-                  ),
-                  SizedBox(height: 10.0,),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20.0),
-                    child: Text('2) Lorem Lored loredm Lored loredadf asddfsm',style:
+                    child: Text('1) ${theWord.example}',style:
                     TextStyle(
                         fontSize: 20.0,
                         color: kBlueBlack

@@ -4,6 +4,7 @@ import '../controller/TheAppBar.dart';
 import '../controller/TheDrawer.dart';
 import '../models/constants.dart';
 import '../models/word.dart';
+import '../controller/DictionaryItems.dart';
 
 class Dictionary extends StatefulWidget {
   static String id = "dictionary";
@@ -18,7 +19,7 @@ class _DictionaryState extends State<Dictionary> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    print(widget.words[0].word);
+    List<Word> listOfWords = widget.words;
     return Container(
       decoration: BoxDecoration(
           color: kWhite,
@@ -50,16 +51,15 @@ class _DictionaryState extends State<Dictionary> {
                     ),
                   ),
                   Expanded(
-                    child: ListView(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      children: <Widget>[
-                        FlatButton(
-                            child: Text("i am waiting for you..you cant deny me"),
-                            onPressed: (){
-                              Navigator.pushNamed(context, Word_page.id);
-                            },
-                        )
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:20.0),
+                      child: ListView.builder(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        itemCount: listOfWords.length,
+                        itemBuilder: (BuildContext context,int index){
+                          return DictionaryItem(title: listOfWords[index].word,word: listOfWords[index],);
+                        },
+                      ),
                     ),
                   )
                 ],
