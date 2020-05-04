@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:yezarekal/screens/words.dart';
+import 'package:search_widget/search_widget.dart';
 import '../controller/TheAppBar.dart';
 import '../controller/TheDrawer.dart';
 import '../models/constants.dart';
 import '../models/word.dart';
 import '../controller/DictionaryItems.dart';
+import '../controller/popupItem.dart';
+import '../models/word_bank.dart';
+import 'package:provider/provider.dart';
 
 class Dictionary extends StatefulWidget {
   static String id = "dictionary";
-  List<Word> words;
-  Dictionary({this.words});
 
   @override
   _DictionaryState createState() => _DictionaryState();
@@ -17,9 +18,16 @@ class Dictionary extends StatefulWidget {
 
 class _DictionaryState extends State<Dictionary> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
+  bool filter({Word word, String query}){
+    if ( word.translation.contains( query.toLowerCase() ) && !word.word.contains("*") )
+      return true;
+    else
+      return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<Word> listOfWords = widget.words;
+    List<Word> listOfWords = Provider.of<WordBank>(context).WORDS;
     return Container(
       decoration: BoxDecoration(
           color: kWhite,
@@ -41,13 +49,33 @@ class _DictionaryState extends State<Dictionary> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    child: TextField(
-                      autofocus: false,
-                      cursorColor: kBlueBlack,
-                      style: TextStyle(fontSize: 20),
-                      onChanged: (value){
+                    child: SearchWidget<Word>(
+                      dataList: listOfWords,
+                      hideSearchBoxWhenItemSelected: false,
+                      listContainerHeight: MediaQuery.of(context).size.height / 4,
+                      queryBuilder: (String query, List<Word> list) {
+                        return list.where(
+                                (item) => filter(word: item , query: query.toLowerCase())
+                        ).toList();
                       },
-                      decoration: kInputdecoration,
+                      popupListItemBuilder: (Word item) {
+                        return !item.word.contains("*") ? PopupItem(word:item) : SizedBox(height: 0,);
+                      },
+                      selectedItemBuilder: (Word selectedItem, VoidCallback deleteSelectedItem) {
+                        return null;
+                      },
+                      noItemsFoundWidget: Text('No Words found'),
+                      textFieldBuilder: (TextEditingController controller, FocusNode focusNode) {
+                       return TextField(
+                         controller: controller,
+                          focusNode: focusNode,
+                          autofocus: false,
+                          cursorColor: kBlueBlack,
+                          style: TextStyle(fontSize: 20),
+                          onChanged: (value){},
+                          decoration: kInputdecoration,
+                        );
+                      }
                     ),
                   ),
                   Expanded(

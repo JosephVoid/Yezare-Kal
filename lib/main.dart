@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:yezarekal/screens/quiz_page.dart';
 import 'controller/TheAppBar.dart';
 import 'models/constants.dart';
@@ -12,6 +13,7 @@ import 'screens/words.dart';
 import 'screens/settings.dart';
 import 'screens/splash.dart';
 import 'models/word.dart';
+import 'models/word_bank.dart';
 
 void main() => runApp(App());
 
@@ -25,18 +27,21 @@ class App extends StatelessWidget {
           currentFocus.unfocus();
         }
       },
-      child: MaterialApp(
-        home: SplashScreen(),
-        routes: {
-          Dictionary.id : (context) => Dictionary(),
-          Quiz.id : (context) => Quiz(),
-          AppBody.id : (context) => AppBody(),
-          Result.id : (context) => Result(),
-          Word_page.id : (context) => Word_page(),
-          Setting.id : (context) => Setting(),
-          QuestionsPage.id : (context) => QuestionsPage(),
-          SplashScreen.id : (context) => SplashScreen(),
-        },
+      child: ChangeNotifierProvider<WordBank>(
+        create: (context) => WordBank(),
+        child: MaterialApp(
+          home: SplashScreen(),
+          routes: {
+            Dictionary.id : (context) => Dictionary(),
+            Quiz.id : (context) => Quiz(),
+            AppBody.id : (context) => AppBody(),
+            Result.id : (context) => Result(),
+            Word_page.id : (context) => Word_page(),
+            Setting.id : (context) => Setting(),
+            QuestionsPage.id : (context) => QuestionsPage(),
+            SplashScreen.id : (context) => SplashScreen(),
+          },
+        ),
       ),
     );
   }
@@ -44,15 +49,11 @@ class App extends StatelessWidget {
 
 class AppBody extends StatefulWidget {
   static String id = "home";
-  List<Word> words;
-  AppBody({this.words});
-
   @override
   _AppBodyState createState() => _AppBodyState();
 }
 
 class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
-
   SequenceAnimation sequenceAnimation;
   AnimationController controller;
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
@@ -185,11 +186,7 @@ class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
                           padding: const EdgeInsets.symmetric(vertical:30.0),
                           child: FlatButton(
                             onPressed: (){
-                              Navigator.push(context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Dictionary(words: widget.words),
-                                  )
-                              );
+                                Navigator.pushNamed(context, Dictionary.id);
                             },
                             child: Container(
                               decoration: BoxDecoration(

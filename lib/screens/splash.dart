@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:yezarekal/models/word_bank.dart';
 import 'dart:convert';
 import '../models/word.dart';
 import 'dart:async';
 import '../main.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = "splash_screen";
@@ -50,11 +52,8 @@ class _SplashScreenState extends State<SplashScreen> {
     await jsonBuilder();
     await animRunner();
     if(isAnimDone && isJsonDone){
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AppBody(words: words),
-          ));
+      Provider.of<WordBank>(context,listen: false).intializeBank(words);
+      Navigator.pushNamed(context, AppBody.id);
     }
 
   }
