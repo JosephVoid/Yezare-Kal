@@ -43,9 +43,6 @@ class _ResultState extends State<Result> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    QOptionButton(title:"5 ደቂቃ",btnType: Buttons.DIFFICULTY),
-                    QOptionButton(title:"5 ጥያቄ ",btnType: Buttons.DIFFICULTY),
-                    QOptionButton(title:"ከባድ",btnType: Buttons.DIFFICULTY),
                   ],
                 ),
                 SizedBox(height:50.0),

@@ -6,6 +6,7 @@ import '../models/word.dart';
 import 'dart:async';
 import '../main.dart';
 import 'package:provider/provider.dart';
+import 'package:sqflite/sqflite.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = "splash_screen";

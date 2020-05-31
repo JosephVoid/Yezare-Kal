@@ -1,40 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:yezarekal/models/constants.dart';
 
-class QOptionButton extends StatefulWidget {
-  final String title;
-  final value;
-  final Buttons btnType;
-  final Function onPress;
-  final bool isSelected;
-
-  QOptionButton({this.title,this.value,this.btnType,this.onPress,this.isSelected = false});
+class RadioButtons extends StatefulWidget {
+  int groupValue;
+  final int value;
+  Function onPress;
+  final String text;
+  RadioButtons({this.value,this.groupValue,this.onPress,this.text});
 
   @override
-  _QOptionButtonState createState() => _QOptionButtonState();
+  _RadioButtonsState createState() => _RadioButtonsState();
 }
 
-class _QOptionButtonState extends State<QOptionButton> {
-
+class _RadioButtonsState extends State<RadioButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: kRed,
-        borderRadius: BorderRadius.all(Radius.circular(30)),
-        border: widget.isSelected ? Border.all(color: kBlueBlack,width: 3) : null,
-      ),
-      child: FlatButton(
-        onPressed: widget.onPress,
-        child: Text(widget.title,
-          style: TextStyle(
-              color: kWhite,
-              fontSize: widget.btnType == Buttons.DIFFICULTY ? 20 : 30,
-              fontWeight: FontWeight.bold
+      child: Row(
+        children: <Widget>[
+          Radio(
+            value: 2,
+            activeColor: kRed,
+            focusColor: kRed,
+            groupValue: widget.groupValue,
+            onChanged: (value) {
+              setState(() {
+                widget.groupValue = value;
+                widget.onPress();
+              });
+            },
           ),
-        ),
+          GestureDetector(
+              onTap: (){ setState(() {widget.groupValue = widget.value;}); },
+              child: Text(widget.text,style: TextStyle(fontSize: 25,color: kBlueBlack),)),
+        ],
       ),
     );
   }
 }
-

@@ -13,6 +13,10 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
+  int timeValue;
+  int diffValue;
+  int numValue;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,48 +62,234 @@ class _QuizState extends State<Quiz> {
                     Text('ደቂቃ',
                       style: TextStyle(
                         color: kBlueBlack,
-                        fontSize: 30.0
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                     SizedBox(height: 20.0,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        QOptionButton(title:"2",value: 2,btnType: Buttons.TIME,onPress: (){},),
-                        QOptionButton(title:"5",value: 5,btnType: Buttons.TIME,onPress: (){},),
-                        QOptionButton(title:"7",value: 7,btnType: Buttons.TIME,onPress: (){},),
-                      ],
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 2,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                groupValue: timeValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    timeValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                onTap: (){ setState(() {timeValue = 2;}); },
+                                child: Text("2 ደቂቃ",style: TextStyle(fontSize: 25,color: kBlueBlack),)
+                              ),
+                          ],
+                        ),
+                      ),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 5,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                autofocus: true,
+                                groupValue: timeValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    timeValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: (){ setState(() {timeValue = 5;}); },
+                                  child: Text("5 ደቂቃ",style: TextStyle(fontSize: 25,color: kBlueBlack),)
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 7,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                groupValue: timeValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    timeValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: (){ setState(() {timeValue = 7;}); },
+                                  child: Text("7 ደቂቃ",style: TextStyle(fontSize: 25,color: kBlueBlack),)
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
                     ),
                     SizedBox(height: 20.0,),
                     Text('ጥያቄ ክብደት',
                       style: TextStyle(
                           color: kBlueBlack,
-                          fontSize: 30.0
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold
                       ),
                     ),
                     SizedBox(height: 20.0,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        QOptionButton(title:"ቀላል",btnType: Buttons.DIFFICULTY,onPress: (){},),
-                        QOptionButton(title:"መካከል",btnType: Buttons.DIFFICULTY,onPress: (){},),
-                        QOptionButton(title:"ከባድ",btnType: Buttons.DIFFICULTY,onPress: (){},),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 1,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                groupValue: diffValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    diffValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: (){ setState(() {diffValue = 1;}); },
+                                  child: Text("ቀላል",style: TextStyle(fontSize: 28,color: kBlueBlack),)
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 2,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                autofocus: true,
+                                groupValue: diffValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    diffValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: (){ setState(() {diffValue = 2;}); },
+                                  child: Text("መካከል",style: TextStyle(fontSize: 28,color: kBlueBlack),)
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 3,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                groupValue: diffValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    diffValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: (){ setState(() {diffValue = 3;}); },
+                                  child: Text("ከባድ",style: TextStyle(fontSize: 28,color: kBlueBlack),)
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(height: 20.0,),
                     Text('ጥያቄ ብዛት',
                       style: TextStyle(
                           color: kBlueBlack,
-                          fontSize: 30.0
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold
                       ),
                     ),
                     SizedBox(height: 20.0,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        QOptionButton(title:"5",value: 5,btnType: Buttons.NUMBER,onPress: (){},),
-                        QOptionButton(title:"10",value: 10,btnType: Buttons.NUMBER,onPress: (){},),
-                        QOptionButton(title:"15",value: 15,btnType: Buttons.NUMBER,onPress: (){},),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 5,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                autofocus: true,
+                                groupValue: numValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    numValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: (){ setState(() {numValue = 5;}); },
+                                  child: Text("5 ጥያቄ",style: TextStyle(fontSize: 25,color: kBlueBlack),)
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 10,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                groupValue: numValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    numValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: (){ setState(() {numValue = 10;}); },
+                                  child: Text("10 ጥያቄ",style: TextStyle(fontSize: 25,color: kBlueBlack),)
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Radio(
+                                value: 15,
+                                activeColor: kRed,
+                                focusColor: kRed,
+                                groupValue: numValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    numValue = value;
+                                  });
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: (){ setState(() {numValue = 15;}); },
+                                  child: Text("15 ጥያቄ",style: TextStyle(fontSize: 25,color: kBlueBlack),)
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(height: 50.0,),
@@ -111,7 +301,12 @@ class _QuizState extends State<Quiz> {
                       child: FlatButton(
                         //TODO: Reroute
                         onPressed: (){
-                          Navigator.pushNamed(context, QuestionsPage.id);
+                          if ( numValue != null && diffValue != null && timeValue != null)
+                            Navigator.push(context,
+                                MaterialPageRoute(
+                                  builder: (context) => QuestionsPage(timeV: timeValue,diffV: diffValue,numV: numValue,),
+                                )
+                            );
                         },
                         child: Text('ጀምር',style:
                           TextStyle(

@@ -7,6 +7,10 @@ import '../main.dart';
 
 class QuestionsPage extends StatefulWidget {
   static String id = "quiz_page";
+  final int timeV;
+  final int numV;
+  final int diffV;
+  QuestionsPage({this.timeV,this.diffV,this.numV});
 
   @override
   _QuestionsPageState createState() => _QuestionsPageState();
@@ -14,7 +18,6 @@ class QuestionsPage extends StatefulWidget {
 
 class _QuestionsPageState extends State<QuestionsPage> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
-
   Widget dispTime({int timeSeconds}){
     return Center(
       child: CountdownFormatted(
@@ -26,7 +29,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +53,10 @@ class _QuestionsPageState extends State<QuestionsPage> {
             child: TheDrawer(page: Pages.QUIZ,)
           ),
           body: Container(
-
+            child: Padding(
+              padding: const EdgeInsets.all(80.0),
+              child: Text("${widget.numV}, ${widget.diffV} ,${widget.timeV}"),
+            ),
           ),
         ),
     );
