@@ -1,40 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:yezarekal/models/constants.dart';
+import  '../screens/quiz_page.dart' as PageQuiz;
 
-class RadioButtons extends StatefulWidget {
-  int groupValue;
-  final int value;
+class QuestionButton extends StatefulWidget {
+  String text;
+  String aId;
   Function onPress;
-  final String text;
-  RadioButtons({this.value,this.groupValue,this.onPress,this.text});
+  QuestionButton({this.aId,this.text,this.onPress});
 
   @override
-  _RadioButtonsState createState() => _RadioButtonsState();
+  _QuestionButtonState createState() => _QuestionButtonState();
 }
 
-class _RadioButtonsState extends State<RadioButtons> {
+class _QuestionButtonState extends State<QuestionButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: <Widget>[
-          Radio(
-            value: 2,
-            activeColor: kRed,
-            focusColor: kRed,
-            groupValue: widget.groupValue,
-            onChanged: (value) {
-              setState(() {
-                widget.groupValue = value;
-                widget.onPress();
-              });
-            },
-          ),
-          GestureDetector(
-              onTap: (){ setState(() {widget.groupValue = widget.value;}); },
-              child: Text(widget.text,style: TextStyle(fontSize: 25,color: kBlueBlack),)),
-        ],
-      ),
+    return OutlineButton(
+      onPressed: (){
+        PageQuiz.QuestionsPageState().correct();//TODO
+      },
+      borderSide: BorderSide(color: kRed,width: 2.0),
+      child: Text(widget.text),
+      splashColor: kRed,
     );
   }
 }

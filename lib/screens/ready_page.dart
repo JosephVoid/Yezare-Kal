@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yezarekal/models/constants.dart';
 import '../controller/TheAppBar.dart';
 import '../controller/TheDrawer.dart';
-import '../controller/Buttons.dart';
 import '../screens/quiz_page.dart';
 
 class Quiz extends StatefulWidget {
@@ -299,7 +298,6 @@ class _QuizState extends State<Quiz> {
                         borderRadius: BorderRadius.all(Radius.circular(30.0))
                       ),
                       child: FlatButton(
-                        //TODO: Reroute
                         onPressed: (){
                           if ( numValue != null && diffValue != null && timeValue != null)
                             Navigator.push(context,
