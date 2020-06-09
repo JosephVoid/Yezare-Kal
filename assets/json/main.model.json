@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "word":"*ሀ",
+    "translation": "Ha"
+  },
+  {
+    "id": 2,
+    "word":"ሁለመና",
+    "defn1":"ሁለንተና ፣ ጠቅላላ አካል",
+    "defn2":"",
+    "example":"ልጂቷ ሁልመናዋ ያምራል",
+    "difficulty":1,
+    "translation":"hulemena"
+  },
+  {
+    "id": 11,
+    "word":"ሁለመና 2",
+    "defn1":"ሁለንተና ፣ ጠቅላላ አካል",
+    "defn2":"",
+    "example":"ልጂቷ ሁልመናዋ ያምራል",
+    "difficulty":2,
+    "translation":"hulemena"
+  },
+  {
+    "id": 12,
+    "word":"ሁለመና 3",
+    "defn1":"ሁለንተና ፣ ጠቅላላ አካል",
+    "defn2":"",
+    "example":"ልጂቷ ሁልመናዋ ያምራል",
+    "difficulty":3,
+    "translation":"hulemena"
+  },
+
+  {
+    "id":3,
+    "word":"*ለ",
+    "translation": "Le"
+  },
+  {
+    "id": 4,
+    "word":"ለሃጫም 1",
+    "defn1":"ሲናገር ፣ ሲበላ ምራቁ የሚዝረከረክ",
+    "defn2":"ቂላቂል",
+    "example":"እንደ ህጻን ለሃጫም ነው",
+    "difficulty":1,
+    "translation":"lehach’ami"
+  },
+  {
+    "id": 9,
+    "word":"ለሃጫም 2",
+    "defn1":"ሲናገር ፣ ሲበላ ምራቁ የሚዝረከረክ",
+    "defn2":"ቂላቂል",
+    "example":"እንደ ህጻን ለሃጫም ነው",
+    "difficulty":2,
+    "translation":"lehach’ami"
+  },
+  {
+    "id": 10,
+    "word":"ለሃጫም 3",
+    "defn1":"ሲናገር ፣ ሲበላ ምራቁ የሚዝረከረክ",
+    "defn2":"ቂላቂል",
+    "example":"እንደ ህጻን ለሃጫም ነው",
+    "difficulty":3,
+    "translation":"lehach’ami"
+  },
+  {
+    "id":5,
+    "word":"*መ",
+    "translation": "M'e"
+  },
+  {
+    "id": 6,
+    "word":"መኪና 1",
+    "defn1":"አራት እግር ያለው በሞተር የሚሰራ አጓጓዥ",
+    "defn2":"",
+    "example":"ወደ ስራ በመኪና ሄድኩ",
+    "difficulty":1,
+    "translation":"mekina"
+  },
+  {
+    "id": 7,
+    "word":"መኪና 3",
+    "defn1":"አራት እግር ያለው በሞተር የሚሰራ አጓጓዥ",
+    "defn2":"",
+    "example":"ወደ ስራ በመኪና ሄድኩ",
+    "difficulty":3,
+    "translation":"mekina"
+  },
+  {
+    "id": 8,
+    "word":"መኪና 2",
+    "defn1":"አራት እግር ያለው በሞተር የሚሰራ አጓጓዥ",
+    "defn2":"",
+    "example":"ወደ ስራ በመኪና ሄድኩ",
+    "difficulty":2,
+    "translation":"mekina"
+  }
+
+]

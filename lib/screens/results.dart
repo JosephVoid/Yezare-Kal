@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:yezarekal/models/constants.dart';
 import '../controller/TheAppBar.dart';
 import '../controller/TheDrawer.dart';
-import '../controller/Buttons.dart';
 
 class Result extends StatefulWidget {
   static String id = "result";
+  final int result;
+  final int numOfQ;
+  final int diff;
+  Result({this.result,this.numOfQ,this.diff});
+
   @override
   _ResultState createState() => _ResultState();
 }
@@ -46,7 +50,7 @@ class _ResultState extends State<Result> {
                   ],
                 ),
                 SizedBox(height:50.0),
-                Text('6',style:
+                Text(widget.result.toString(),style:
                     TextStyle(
                       fontSize: 200.0,
                       color: kBlueBlack,
