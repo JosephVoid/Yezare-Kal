@@ -140,7 +140,7 @@ class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
                                   'የዛሬ ቃል',
                                   style: TextStyle(
                                       color: kWhite,
-                                      fontSize: 60.0,
+                                      fontSize: 45.0,
                                       fontWeight: FontWeight.w600
                                   ),
                                 ),
@@ -169,7 +169,7 @@ class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
                                   'ጥያቄዎች',
                                   style: TextStyle(
                                       color: kBlueBlack,
-                                      fontSize: 60.0,
+                                      fontSize: 45.0,
                                       fontWeight: FontWeight.w600
                                   ),
                                 ),
@@ -198,7 +198,7 @@ class _AppBodyState extends State<AppBody> with SingleTickerProviderStateMixin{
                                   'መዝገበ ቃላት',
                                   style: TextStyle(
                                       color: kWhite,
-                                      fontSize: 60.0,
+                                      fontSize: 45.0,
                                       fontWeight: FontWeight.w600
                                   ),
                                 ),
